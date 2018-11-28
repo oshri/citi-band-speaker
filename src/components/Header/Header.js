@@ -1,6 +1,7 @@
 // IMPORT PACKAGE REFERENCES
 
 import React, {Component} from 'react';
+import Instrument from '../Instrument/Instrument';
 // import { NavLink } from 'react-router-dom';
 const Highcharts = require('highcharts');
 const ReactHighcharts = require('react-highcharts');
@@ -91,6 +92,32 @@ const plotOptions = {
 export class Header extends Component {
     constructor(props) {
         super(props);
+
+        // TODO: change to state
+        this.state = {
+            id: 0,
+            name: 'BestBand',
+            instrument: 'piano',
+            notes: [
+              null,
+              51,
+              88,
+              88,
+              67,
+              null,
+              null,
+              62,
+              null,
+              null,
+              64,
+              null,
+              null,
+              null,
+              2,
+              null
+            ]
+        };
+
         this.initCharts();
     }
 
@@ -242,6 +269,7 @@ export class Header extends Component {
     };
 
     render() {
+        
         return (
             <div>
                 <div style={styles.header}>
@@ -255,6 +283,10 @@ export class Header extends Component {
                         <div style={styles.containerSize}><ReactHighcharts config = {this.gaugeChartConfig3}></ReactHighcharts></div>
                     </div>
                 </div>
+                {/* TODO: add gor loop  */}
+                <Instrument
+                    instrument={this.state.instrument}
+                    notes={this.state.notes}/>
             </div>
         );
     }
