@@ -19,6 +19,7 @@
     },
     "plugins": [
         "react"
+<<<<<<< HEAD
     ],
     "rules": {
         "no-console": "off",        
@@ -32,4 +33,7 @@
             "always"
         ]
     }
+=======
+    ]
+>>>>>>> origin/integration
 }
