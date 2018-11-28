@@ -4,6 +4,7 @@ class MidiPlayerService {
 	globalLoop = null;
 	serverUrl = 'http://ec2-18-191-23-1.us-east-2.compute.amazonaws.com:5000';
 	family_numbers = {};
+	instruments = [];
 
 	constructor() {
 
@@ -28,6 +29,8 @@ class MidiPlayerService {
 
 	async fetchInstruments() {
 		return await new Promise((resolve) => {
+			console.log('Fetch Instrument Success');
+			this.instruments = Instruments;
 			resolve(Instruments);
 		});
 	}
@@ -89,6 +92,74 @@ class MidiPlayerService {
 			.replace(new RegExp(' ', 'g'), '_')
 			.replace('(', '')
 			.replace(')', '');
+	}
+
+	getInstruments() {
+		return this.instruments.reduce((map, obj) => {
+			map[this.normalizeInstrumentName(obj[2])] = obj[1];
+			return map;
+		}, {});
+	}
+
+	getInstrumentNumberByName(instrument_name) {
+		return instrument_numbers[instrument_name] || family_numbers[instrument_name];
+	}
+
+	playBar(bar) {
+		const loop = this.getMockLoop();
+
+		let parts = loop.parts;
+		let bar_duration_sec = (loop.notes_per_measure / 4) * (60 / loop.bpm);
+		
+		for (var part = 0; part < parts.length; part++) {
+			let instrumentNumber = this.getInstrumentNumberByName(parts[part].instrument);
+			MIDI.programChange(part, instrumentNumber);
+			for (var i = 0; i < parts[part].notes.length; i++) {
+				let bar_fraction = i / loop.notes_per_measure;
+				if (parts[part].notes[i]) {
+					MIDI.chordOn(part,
+						[parts[part].notes[i]],
+						parts[part].velocity,
+						MIDI.getContext().currentTime + bar_fraction * bar_duration_sec,
+					)
+				}
+			}
+		}
+	}
+
+	startPlaying () {
+		console.log('start playing');
+
+		const loop = this.getMockLoop();
+		const bar = 0;
+		let bar_duration_ms = 1000
+			* (loop.notes_per_measure / 4)
+			* (60 / loop.bpm);
+
+		setInterval(() => this.playBar(bar), bar_duration_ms);
+	}
+
+	async loadMidiPluginAndPlay(){
+		return await new Promise((resolve) => {
+			
+			window.MIDI.loadPlugin({
+				soundfontUrl: "http://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/",
+				// soundfontUrl: "./soundfont/",
+				instruments: [
+					"rock_organ",
+					"acoustic_guitar_steel",
+					"synth_drum",
+				],
+				onprogress: (state, progress) => {
+					console.log(state, progress);
+				},
+				onsuccess: () => {
+					console.log('Load MIDI pluginsSuccess');
+					resolve({load: true});
+				}
+			});
+			
+		});
 	}
 
 }
