@@ -16,7 +16,7 @@ class SpeakerPage extends React.Component {
             await midiPlayerService.fetchInstruments();
             await this.startFetchTimmer();
             
-            const startPlay = await midiPlayerService.loadMidiPluginAndPlay().then((status) => {
+            await midiPlayerService.loadMidiPluginAndPlay().then((status) => {
                 if(status) {
                     midiPlayerService.startPlaying();
                 }

@@ -150,7 +150,7 @@ class MidiPlayerService {
 		return this.instrument_numbers[instrument_name] || this.family_numbers[instrument_name];
 	}
 
-	playBar(bar) {
+	playBar() {
 		const loop = this.getMockLoop();
 
 		let parts = loop.parts;
