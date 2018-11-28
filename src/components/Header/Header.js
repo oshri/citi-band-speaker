@@ -9,6 +9,12 @@ require("highcharts/js/modules/solid-gauge.js")(ReactHighcharts.Highcharts);
 import citiBandLogo from '../../images/citiBandLogo.png';
 
 const styles = {
+    header: {
+        display: 'inline-flex',
+        width: '100%',
+        justifyContent: 'space-between'
+    },
+
     containerSize: {
         width: 120,
         height:160,
@@ -19,13 +25,7 @@ const styles = {
         display: 'inline-flex',
         flexDirection: 'row',
         width: 402,
-        height: 452,
-        border: '1px solid #ccc',
-        padding: 15,
         boxSizing: 'border-box',
-        
-        marginLeft: 50,
-        marginTop: 50,
     }
 };
 
@@ -244,7 +244,7 @@ export class Header extends Component {
     render() {
         return (
             <div>
-                <div className="header">
+                <div style={styles.header}>
                     <div className="logo">
                         Header <img className='m-3' height='72' src={citiBandLogo} alt='Citi Band Logo' />
                     </div>  
