@@ -151,7 +151,7 @@ class MidiPlayerService {
 	}
 
 	playBar() {
-		const loop = this.getMockLoop();
+		const loop = this.globalLoop;
 
 		let parts = loop.parts;
 		let bar_duration_sec = loop.notes_per_measure / 4 * (60 / loop.bpm);
