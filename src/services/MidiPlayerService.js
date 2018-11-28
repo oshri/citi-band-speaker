@@ -148,9 +148,6 @@ class MidiPlayerService {
 
 	getInstrumentNumberByName(instrument_name) {
 		return this.instrument_numbers[instrument_name] || this.family_numbers[instrument_name];
-			instrument_numbers[instrument_name] ||
-			family_numbers[instrument_name]
-		);
 	}
 
 	playBar(bar) {
@@ -161,8 +158,6 @@ class MidiPlayerService {
 
 		for (var part = 0; part < parts.length; part++) {
 			let instrumentNumber = this.getInstrumentNumberByName(parts[part].instrument);
-				parts[part].instrument
-			);
 			
 			MIDI.programChange(part, instrumentNumber);
 			
