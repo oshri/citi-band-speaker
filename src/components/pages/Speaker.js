@@ -55,7 +55,10 @@ class SpeakerPage extends React.Component {
             .filter(id => !!this.state.parts[id])
             .map(id => this.state.parts[id])
             .map((part, i) => (<div key={i} style={{display: 'flex', alignItems: 'center'}}>
-                <div style={{marginRight: '10px'}}>{part.name}</div>
+                <div style={{marginRight: '10px', textAlign: 'center'}}>
+                    <div>{part.name}</div>
+                    <div style={{fontStyle: 'italic'}}>{part.instrument}</div>
+                </div>
                 <Instrument
                             instrument={part.instrument}
                             notes={part.notes}/>

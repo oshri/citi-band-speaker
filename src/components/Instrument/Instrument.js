@@ -22,7 +22,7 @@ export class Instrument extends Component {
     }
 
     renderSliders() {
-        return this.props.notes.map((note, i) => (
+        return this.state.notes.map((note, i) => (
             <div key={i} className="Instrument__slider">
                 <Slider index={i} value={note} onChange={this.handleSliderChange.bind(this)} />
             </div>
