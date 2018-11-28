@@ -7,7 +7,27 @@ const ReactHighcharts = require('react-highcharts');
 require("highcharts/js/highcharts-more")(ReactHighcharts.Highcharts);
 require("highcharts/js/modules/solid-gauge.js")(ReactHighcharts.Highcharts);
 import citiBandLogo from '../../images/citiBandLogo.png';
-import styles from './Header.css';
+
+const styles = {
+    containerSize: {
+        width: 120,
+        height:160,
+        float:'left'
+    },
+        
+    card: {
+        display: 'inline-flex',
+        flexDirection: 'row',
+        width: 402,
+        height: 452,
+        border: '1px solid #ccc',
+        padding: 15,
+        boxSizing: 'border-box',
+        
+        marginLeft: 50,
+        marginTop: 50,
+    }
+};
 
 const chart = {
     type: 'solidgauge',
@@ -35,10 +55,10 @@ const pane = {
       {
         outerRadius: '105%',
         innerRadius: '100%',
-        backgroundColor: Highcharts.Color('#EBEBEB')
+        backgroundColor: Highcharts.Color('#aaa')
           .setOpacity(1)
           .get(),
-        borderWidth: 0
+        borderWidth: 4
       }
     ]
 };
@@ -91,33 +111,44 @@ export class Header extends Component {
             pane: {...pane},
             yAxis: {...yAxis},
             plotOptions: {
-              solidgauge: {
-                  ...plotOptions.solidgauge,
+                solidgauge: {
+                  borderWidth: "4px",
                   dataLabels: {
-                    ...plotOptions.solidgauge.dataLabels,
+                    enabled: true,
+                    y: -25,
+                    borderWidth: 0,
+                    backgroundColor: "none",
+                    useHTML: true,
+                    shadow: false,
+                    style: {
+                      fontSize: "10px"
+                    },
                     formatter: function() {
-                        return (
-                          '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:32px;font-weight:bold;">' +
-                          this.y +
-                          "</span>"
-                        );
+                      return (
+                        '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:32px;font-weight:bold;">' +
+                        this.y +
+                        "</span>"
+                      );
                     }
-                  }
-              }
+                  },
+                  linecap: "round",
+                  stickyTracking: true,
+                  rounded: true
+                }
             },
             series: [
-              {
+            {
                 borderColor: "#FE6869",
                 data: [
-                  {
+                {
                     radius: "100%",
-                    innerRadius: "100%",
+                    innerRadius: "90%",
                     y: 120
-                  }
+                }
                 ]
-              }
-            ]
-        };
+            }
+              ]
+           };
         this.gaugeChartConfig2 = {
         credits: false,
         chart: {
@@ -156,7 +187,7 @@ export class Header extends Component {
             data: [
                 {
                 radius: "100%",
-                innerRadius: "100%",
+                innerRadius: "90%",
                 y: 4 * 100
                 }
             ]
@@ -201,7 +232,7 @@ export class Header extends Component {
             data: [
                 {
                 radius: "100%",
-                innerRadius: "100%",
+                innerRadius: "90%",
                 y: 15 * 6.25 
                 }
             ]
@@ -217,17 +248,12 @@ export class Header extends Component {
                     <div className="logo">
                         Header <img className='m-3' height='72' src={citiBandLogo} alt='Citi Band Logo' />
                     </div>  
-                    <ReactHighcharts config = {this.gaugeChartConfig}></ReactHighcharts>
-                    <ReactHighcharts config = {this.gaugeChartConfig2}></ReactHighcharts>
-                    <ReactHighcharts config = {this.gaugeChartConfig3}></ReactHighcharts>
-                    {/* <div className="stats">
-                        <div id="container1" className='container-size'>
-                        </div>
-                        <div id="container2" className='container-size'>
-                        </div>
-                        <div id="container3" className='container-size'>
-                        </div>
-                    </div> */}
+                    
+                    <div style={styles.card}>
+                        <div style={styles.containerSize}><ReactHighcharts config = {this.gaugeChartConfig}></ReactHighcharts></div>
+                        <div style={styles.containerSize}><ReactHighcharts config = {this.gaugeChartConfig2}></ReactHighcharts></div>
+                        <div style={styles.containerSize}><ReactHighcharts config = {this.gaugeChartConfig3}></ReactHighcharts></div>
+                    </div>
                 </div>
             </div>
         );
