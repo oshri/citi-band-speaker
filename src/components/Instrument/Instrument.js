@@ -3,28 +3,11 @@ import Slider from './Slider/Slider';
 import './Instrument.scss';
 
 export class Instrument extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            instrument: props.instrument,
-            notes: this.props.notes
-        };
-    }
-
-    handleSliderChange(index, value) {
-        console.log('Change', index, value);
-        const newNotes = this.state.notes.slice();
-        newNotes.splice(index, 1, value < 0 ? null : value);
-
-        this.props.onChange(newNotes);
-        this.setState({ notes: newNotes });
-    }
 
     renderSliders() {
-        return this.state.notes.map((note, i) => (
+        return this.props.notes.map((note, i) => (
             <div key={i} className="Instrument__slider">
-                <Slider index={i} value={note} onChange={this.handleSliderChange.bind(this)} />
+                <Slider index={i} value={note} />
             </div>
         ));
     }

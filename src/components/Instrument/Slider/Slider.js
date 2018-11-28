@@ -4,21 +4,6 @@ import './Slider.scss';
 import './Rangeslider/index.css';
 
 class Slider extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: this.props.value || -1,
-            index: this.props.index
-        };
-    }
-
-    handleChange(value) {
-        this.setState({
-            value: value
-        });
-    }
-
     render() {
         return (
             <div className="slider-vertical">
@@ -26,8 +11,8 @@ class Slider extends Component {
                     min={-1}
                     max={88}
                     tooltip={false}
-                    value={this.state.value}
-                    handleLabel={this.state.value + ''}
+                    value={this.props.value || -1}
+                    handleLabel={(this.props.value || -1) + ''}
                     orientation="vertical"
                 />
             </div>
