@@ -9,7 +9,7 @@
     "globals": {
         "MIDI": true
     },
-    "extends": [ "eslint:recommended", "plugin:react/recommended" ],
+    "extends": [],
     "parserOptions": {
         "ecmaVersion": 6,
         "ecmaFeatures": {
@@ -19,21 +19,11 @@
     },
     "plugins": [
         "react"
-<<<<<<< HEAD
     ],
     "rules": {
         "no-console": "off",        
         "indent": "off",
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "quotes": "off",
+        "semi": "off"
     }
-=======
-    ]
->>>>>>> origin/integration
 }

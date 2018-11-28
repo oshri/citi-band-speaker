@@ -1,5 +1,6 @@
 import React from 'react';
 import MidiPlayerService from '../../services/MidiPlayerService';
+import Instrument from "../Instrument/Instrument";
 
 const midiPlayerService = new MidiPlayerService();
 class SpeakerPage extends React.Component {
@@ -7,9 +8,17 @@ class SpeakerPage extends React.Component {
 		super(props);
 
 		this.state = {
-			parts: []
+			parts: {}
 		};
 	}
+
+	async loadParts() {
+        const parts = await midiPlayerService.fetchParts();
+
+        this.setState({
+            parts: parts
+        });
+    }
 
 	async componentDidMount() {
 		try {
@@ -30,14 +39,10 @@ class SpeakerPage extends React.Component {
     
     async startFetchTimmer() {
         try {
+            await this.loadParts();
             setInterval(async () => {
-                const parts = await midiPlayerService.fetchParts();
-                
-                this.setState({
-                    parts: parts
-                });
-
-              }, 10000);
+                await this.loadParts();
+              }, 3000);
 
 			
 		} catch (err) {
@@ -45,8 +50,23 @@ class SpeakerPage extends React.Component {
 		}
     }
 
+    renderParts() {
+	    return Object.keys(this.state.parts)
+            .filter(id => !!this.state.parts[id])
+            .map(id => this.state.parts[id])
+            .map((part, i) => (<div key={i} style={{display: 'flex', alignItems: 'center'}}>
+                <div style={{marginRight: '10px'}}>{part.name}</div>
+                <Instrument
+                            instrument={part.instrument}
+                            notes={part.notes}/>
+            </div>));
+    }
+
 	render() {
-		return <div>Speaker Page</div>;
+	    console.log('parts', this.state.parts);
+		return (<div>
+            {this.renderParts()}
+        </div>);
 	}
 }
 

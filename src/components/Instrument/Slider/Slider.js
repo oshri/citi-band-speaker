@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import RangeSlider from './Rangeslider';
 import './Slider.scss';
 import './Rangeslider/index.css';
-import * as debounce from 'lodash.debounce';
 
 class Slider extends Component {
     constructor(props) {

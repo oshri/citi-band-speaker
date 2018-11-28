@@ -284,10 +284,6 @@ export class Header extends Component {
                         <div style={styles.containerSize}><ReactHighcharts config = {this.gaugeChartConfig3}></ReactHighcharts></div>
                     </div>
                 </div>
-                {/* TODO: add gor loop  */}
-                <Instrument
-                    instrument={this.state.instrument}
-                    notes={this.state.notes}/>
             </div>
         );
     }
