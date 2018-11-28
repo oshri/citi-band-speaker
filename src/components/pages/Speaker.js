@@ -42,7 +42,7 @@ class SpeakerPage extends React.Component {
             await this.loadParts();
             setInterval(async () => {
                 await this.loadParts();
-              }, 3000);
+              }, 1000);
 
 			
 		} catch (err) {

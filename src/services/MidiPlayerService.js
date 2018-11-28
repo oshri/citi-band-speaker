@@ -43,7 +43,7 @@ class MidiPlayerService {
 	convertPartsToLoop(parts) {
 		if (parts && parts !== '') {
 			const loop = {
-				bpm: 120,
+				bpm: 60,
 				notes_per_measure: 16,
 				parts: []
 			};
