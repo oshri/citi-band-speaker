@@ -19,7 +19,8 @@
     "lint:fix": "eslint . --fix; exit 0",
     "start": "npm run serve:dev",
     "test": "echo \"No tests available\"; exit 0",
-    "webpack-defaults": "webpack-defaults"
+    "webpack-defaults": "webpack-defaults",
+    "deploy": "npm run build:dev && firebase deploy"
   },
   "repository": {
     "type": "git",
