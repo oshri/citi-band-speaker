@@ -100,7 +100,7 @@ export class Header extends Component {
             chart: {...chart, renderTo: 'container1'},
             title: {
               ...title,
-              text: "BPM"
+              text: ""
             },
             exporting: {
               enabled: false
@@ -125,9 +125,9 @@ export class Header extends Component {
                     },
                     formatter: function() {
                       return (
-                        '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:32px;font-weight:bold;">' +
+                        '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:28px;font-weight:bold;">' +
                         this.y +
-                        "</span>"
+                        "</span><div>BPM</div></div>"
                       );
                     }
                   },
@@ -156,7 +156,7 @@ export class Header extends Component {
         },
         title: {
             ...title,
-            text: "Signature"
+            text: ""
         },
         exporting: {
             enabled: false
@@ -173,9 +173,9 @@ export class Header extends Component {
                     ...plotOptions.solidgauge.dataLabels,
                     formatter: function() {
                         return (
-                            '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:32px;font-weight:bold;">' +
+                            '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:28px;font-weight:bold;">' +
                             this.y/100 + '/' + this.y/100 +
-                            "</span>"
+                            "</span><div>Signature</div></div>"
                         );
                     }
                 }
@@ -200,7 +200,7 @@ export class Header extends Component {
             ...chart    
         },
         title: {
-            text: "Bar",
+            text: "",
             ...title,
         },
         exporting: {
@@ -218,9 +218,9 @@ export class Header extends Component {
                 ...plotOptions.solidgauge.dataLabels,
                 formatter: function() {
                     return (
-                        '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:32px;font-weight:bold;">' +
+                        '<div style="width:100%;text-align:center; color:#434345;"><span style="font-family:Montserrat;font-size:28px;font-weight:bold;">' +
                         this.y / 6.25+
-                        "</span>"
+                        "</span><div>Bars</div></div>"
                     );
                 }
             }
@@ -230,12 +230,12 @@ export class Header extends Component {
             {
             borderColor: "#86ADDB",
             data: [
-                {
-                radius: "100%",
-                innerRadius: "90%",
-                y: 15 * 6.25 
-                }
-            ]
+                    {
+                        radius: "100%",
+                        innerRadius: "90%",
+                        y: 15 * 6.25 
+                    }
+                ]
             }
         ]
         };
@@ -246,7 +246,7 @@ export class Header extends Component {
             <div>
                 <div style={styles.header}>
                     <div className="logo">
-                        Header <img className='m-3' height='72' src={citiBandLogo} alt='Citi Band Logo' />
+                        <img className='m-3' height='72' src={citiBandLogo} alt='Citi Band Logo' />
                     </div>  
                     
                     <div style={styles.card}>
