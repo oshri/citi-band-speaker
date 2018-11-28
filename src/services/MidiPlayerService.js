@@ -15,6 +15,10 @@ class MidiPlayerService {
 		};
 	}
 
+	deleteAllParts() {
+        fetch(`${this.serverUrl}/part`, {method: 'DELETE'});
+	}
+
 	async fetchParts() {
 		try {
 			const res = await fetch(`${this.serverUrl}/part`);

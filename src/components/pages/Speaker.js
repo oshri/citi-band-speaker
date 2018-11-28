@@ -50,6 +50,10 @@ class SpeakerPage extends React.Component {
 		}
     }
 
+    deleteAllPlayers() {
+        midiPlayerService.deleteAllParts();
+    }
+
     renderParts() {
 	    return Object.keys(this.state.parts)
             .filter(id => !!this.state.parts[id])
@@ -68,6 +72,7 @@ class SpeakerPage extends React.Component {
 	render() {
 	    console.log('parts', this.state.parts);
 		return (<div>
+            <button type="button" onClick={this.deleteAllPlayers.bind(this)}>Delete All Players</button>
             {this.renderParts()}
         </div>);
 	}
