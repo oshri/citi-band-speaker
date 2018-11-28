@@ -1,0 +1,58 @@
+body{
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .container-size {
+  /* border:1px solid blue;    */
+    width:120px;
+    height:160px;
+    float:left;
+  }
+  
+  .card{
+    width:402px;
+    height:452px;
+    border:1px solid #ccc;
+    padding:5px 15px;
+    box-sizing: border-box;
+    
+    margin-left:50px;
+    margin-top:50px;
+  }
+  
+  h2{
+    margin-bottom:0;
+    color:#9B9B9B;
+    font-size:18px;
+  }
+  h4{
+    margin-top:15px;
+    margin-bottom:5px;
+    font-size:13px;
+    color:#434345;
+    font-weight:bold;
+   
+  }
+  
+  .highcharts-axis{
+    display:none;
+  }
+  
+  td{
+  
+    font-size:12px;
+    text-transform:uppercase;
+  }
+  
+  .source{
+    width:100px;
+    color: #555555;
+  }
+  .source-percent{
+    width:100px;
+    color: #777777;
+  }
+  .source-bar{
+    
+    width:100px;
+  }

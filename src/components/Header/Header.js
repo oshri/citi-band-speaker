@@ -2,8 +2,12 @@
 
 import React, {Component} from 'react';
 // import { NavLink } from 'react-router-dom';
-import Highcharts from 'highcharts';
+const Highcharts = require('highcharts');
+const ReactHighcharts = require('react-highcharts');
+require("highcharts/js/highcharts-more")(ReactHighcharts.Highcharts);
+require("highcharts/js/modules/solid-gauge.js")(ReactHighcharts.Highcharts);
 import citiBandLogo from '../../images/citiBandLogo.png';
+import styles from './Header.css';
 
 const chart = {
     type: 'solidgauge',
@@ -71,9 +75,9 @@ export class Header extends Component {
     }
 
     initCharts = () => {
-        this.gaugeChartObj1 = new Highcharts.Chart("container1", {
+        this.gaugeChartConfig = {
             credits: false,
-            chart: {...chart},
+            chart: {...chart, renderTo: 'container1'},
             title: {
               ...title,
               text: "BPM"
@@ -113,8 +117,8 @@ export class Header extends Component {
                 ]
               }
             ]
-        });
-        this.gaugeChartObj2 = new Highcharts.Chart("container2", {
+        };
+        this.gaugeChartConfig2 = {
         credits: false,
         chart: {
             ...chart
@@ -158,8 +162,8 @@ export class Header extends Component {
             ]
             }
         ]
-        });
-        this.gaugeChartObj3 = new Highcharts.Chart("container3", {
+        };
+        this.gaugeChartConfig3 = {
         credits: false,
         chart: {
             ...chart    
@@ -203,7 +207,7 @@ export class Header extends Component {
             ]
             }
         ]
-        });
+        };
     };
 
     render() {
@@ -213,14 +217,17 @@ export class Header extends Component {
                     <div className="logo">
                         Header <img className='m-3' height='72' src={citiBandLogo} alt='Citi Band Logo' />
                     </div>  
-                    <div className="stats">
+                    <ReactHighcharts config = {this.gaugeChartConfig}></ReactHighcharts>
+                    <ReactHighcharts config = {this.gaugeChartConfig2}></ReactHighcharts>
+                    <ReactHighcharts config = {this.gaugeChartConfig3}></ReactHighcharts>
+                    {/* <div className="stats">
                         <div id="container1" className='container-size'>
                         </div>
                         <div id="container2" className='container-size'>
                         </div>
                         <div id="container3" className='container-size'>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
