@@ -1,7 +1,6 @@
 // IMPORT PACKAGE REFERENCES
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import citiBandLogo from '../../images/citiBandLogo.png';
 
 export const Header = () => (
