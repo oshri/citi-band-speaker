@@ -1,21 +1,21 @@
-// IMPORT DATA FROM STATIC JSON FILE
+// // IMPORT DATA FROM STATIC JSON FILE
 
-import zips from './zips.json';
+// import zips from './zips.json';
 
 
-// COMPONENT
+// // COMPONENT
 
-const simulateError = false;
+// const simulateError = false;
 
-export const fetchZipCodes = () => {
-    return new Promise((resolve, reject) => {
-        // simulate lengthy service call
-        setTimeout(() => {
-            if (simulateError) {
-                reject('Failed to fetch list of zip codes');
-            } else {
-                resolve(zips);
-            }
-        }, 1000);
-    });
-};
+// export const fetchZipCodes = () => {
+//     return new Promise((resolve, reject) => {
+//         // simulate lengthy service call
+//         setTimeout(() => {
+//             if (simulateError) {
+//                 reject('Failed to fetch list of zip codes');
+//             } else {
+//                 resolve(zips);
+//             }
+//         }, 1000);
+//     });
+// };

@@ -1,11 +1,13 @@
 // IMPORT PACKAGE REFERENCES
 
 import React, {Component} from 'react';
+import Instrument from '../Instrument/Instrument';
 // import { NavLink } from 'react-router-dom';
 const Highcharts = require('highcharts');
 const ReactHighcharts = require('react-highcharts');
 require("highcharts/js/highcharts-more")(ReactHighcharts.Highcharts);
 require("highcharts/js/modules/solid-gauge.js")(ReactHighcharts.Highcharts);
+
 import citiBandLogo from '../../images/citiBandLogo.png';
 
 const styles = {
@@ -91,6 +93,32 @@ const plotOptions = {
 export class Header extends Component {
     constructor(props) {
         super(props);
+
+        // TODO: change to state
+        this.state = {
+            id: 0,
+            name: 'BestBand',
+            instrument: 'piano',
+            notes: [
+              null,
+              51,
+              88,
+              88,
+              67,
+              null,
+              null,
+              62,
+              null,
+              null,
+              64,
+              null,
+              null,
+              null,
+              2,
+              null
+            ]
+        };
+
         this.initCharts();
     }
 
@@ -242,6 +270,7 @@ export class Header extends Component {
     };
 
     render() {
+        
         return (
             <div>
                 <div style={styles.header}>

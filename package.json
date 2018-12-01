@@ -19,7 +19,8 @@
     "lint:fix": "eslint . --fix; exit 0",
     "start": "npm run serve:dev",
     "test": "echo \"No tests available\"; exit 0",
-    "webpack-defaults": "webpack-defaults"
+    "webpack-defaults": "webpack-defaults",
+    "deploy": "npm run build:dev && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "bundle-buddy-webpack-plugin": "^0.3.0",
     "clean-webpack-plugin": "^0.1.18",
@@ -57,14 +58,17 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
     "highcharts": "^6.2.0",
     "jquery": "^3.3.1",
+    "lodash.debounce": "^4.0.8",
     "popper.js": "^1.12.9",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-highcharts": "^16.0.2",
+    "react-rangeslider": "^2.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

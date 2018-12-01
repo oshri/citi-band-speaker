@@ -6,7 +6,10 @@
         "es6": true,
         "node": true
     },
-    "extends": [ "eslint:recommended", "plugin:react/recommended" ],
+    "globals": {
+        "MIDI": true
+    },
+    "extends": [],
     "parserOptions": {
         "ecmaVersion": 6,
         "ecmaFeatures": {
@@ -16,5 +19,11 @@
     },
     "plugins": [
         "react"
-    ]
+    ],
+    "rules": {
+        "no-console": "off",        
+        "indent": "off",
+        "quotes": "off",
+        "semi": "off"
+    }
 }
